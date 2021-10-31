@@ -1,16 +1,16 @@
 const express = require("express");
 const formidable = require("express-formidable");
 const cors = require("cors");
+
 require("dotenv").config();
 
 const app = express();
+app.use(cors());
+app.use(formidable());
 
 const API_KEY = process.env.API_KEY;
 const DOMAIN = process.env.DOMAIN;
 var mailgun = require("mailgun-js")({ apiKey: API_KEY, domain: DOMAIN });
-
-app.use(cors());
-app.use(formidable());
 
 app.post("/form", async (req, res) => {
   try {
