@@ -10,7 +10,10 @@ app.use(formidable());
 
 const API_KEY = process.env.API_KEY_MAILGUN;
 const DOMAIN = process.env.DOMAIN;
-var mailgun = require("mailgun-js")({ apiKey: API_KEY, domain: DOMAIN });
+var mailgun = require("mailgun-js")({
+  apiKey: process.env.API_KEY_MAILGUN,
+  domain: process.env.DOMAIN,
+});
 
 app.post("/form", async (req, res) => {
   try {
